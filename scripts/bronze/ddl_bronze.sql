@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS bronze.crm_sales_details(
 CREATE TABLE IF NOT EXISTS bronze.erp_cust_az12(
 	cid    VARCHAR(50),
 	bdate  DATE,
-	gen 	 VARCHAR(50)
+	gen    VARCHAR(50)
 )
 
 
