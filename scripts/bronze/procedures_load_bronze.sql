@@ -3,10 +3,8 @@
 	Stored Procedure: Load Bronze Layer (Source -> Bronze)
 	===============================================================================
 	Purpose:
-    	This procedure (bronze.load_bronze) loads data from external CSV files
-           (CRM and ERP source systems) into the tables of the 'bronze' schema.
-
-	    For each table, the procedure:
+    	This procedure loads data into the 'bronze' schema from external CSV files.
+	    It performs the following actions:
 	      - TRUNCATES the table, removing all existing rows
 	      - LOADS the data from the CSV file using the COPY command
 
@@ -191,7 +189,6 @@ $$;
 
 -- 2. Run the procedure
 CALL bronze.load_bronze();
-
 
 
 -- 3. Check the rows
