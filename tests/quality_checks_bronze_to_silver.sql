@@ -17,6 +17,7 @@ Script Purpose:
         - Key consistency between related tables.
  
 Usage Notes:
+	- Run these checks after data loading Silver Layer.
     - Run each query individually (DBeaver: Ctrl+Enter), not the whole file.
 ===============================================================================
 */
