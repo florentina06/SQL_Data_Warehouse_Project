@@ -13,7 +13,7 @@ The Gold Layer contains business-ready data organized into tables to support rep
 
 | Column Name | Data Type | Description |
 |---|---|---|
-| customer_key | INT | Unique key used to identify each customer record in the dimension table. |
+| customer_key | INT | Surrogate key used to identify each customer record in the dimension table. |
 | customer_id | INT | Unique numeric ID assigned to each customer. |
 | customer_number | NVARCHAR(50) | Customer code used for identification and tracking. |
 | first_name | NVARCHAR(50) | Customer's first name. |
@@ -33,7 +33,7 @@ The Gold Layer contains business-ready data organized into tables to support rep
 
 | Column Name | Data Type | Description |
 |---|---|---|
-| product_key | INT | Unique key used to identify each product record in the dimension table. |
+| product_key | INT | Surrogate key used to identify each product record in the dimension table. |
 | product_id | INT | Unique numeric ID assigned to each product. |
 | product_number | NVARCHAR(50) | Product code used for identification and tracking. |
 | product_name | NVARCHAR(50) | Product name, including details such as type, color, and size. |
