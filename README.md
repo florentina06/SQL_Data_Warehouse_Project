@@ -1,34 +1,39 @@
-# Data Warehouse and Analytics Project
+# Sales Data Warehouse & Analytics
 
-Welcome to the **Data Warehouse and Analytics Project** repository!
-This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project, it highlights industry best practices in data engineering and analytics.
+A portfolio project that builds a data warehouse in PostgreSQL and uses it to answer business questions about sales.
 
+## Architecture
 
-----------------------------------------------
+The warehouse is organized in three layers:
 
-## 🚀 Project Requirements
+- **Bronze:** raw data loaded directly from the CSV files, unchanged.
+- **Silver:** cleaned and standardized data.
+- **Gold:** business-ready tables arranged in a star schema, used for reporting.
 
-### Building the Data Warehouse (Data Engineering)
+## What This Project Covers
 
-#### Objective
-Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
+- **ETL:** loading data from two source systems (CRM and ERP) and transforming it layer by layer.
+- **Data modeling:** designing fact and dimension tables for analysis.
+- **Analytics:** SQL queries on customer behavior, product performance and sales trends.
 
-#### Specifications
-- **Data Sources**: Import data from two source systems (ERP and CRM) provided as CSV files.
-- **Data Quality**: Cleanse and resolve data quality issues prior to analysis.
-- **Integration**: Combine both sources into a single, user-friendly data model designed for analytical queries.
-- **Scope**: Focus on the latest dataset only; historization of data is not required.
-- **Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
+## Goals
 
+1. Combine CRM and ERP data into a single, easy-to-query model.
+2. Fix data quality problems before analysis.
+3. Work with the latest data only (no history tracking).
+4. Document the model so both business and technical users can understand it.
 
-----------------------------------------------
+## Repository Structure
 
-### BI: Analytics & Reporting (Data Analysis)
+```
+├── datasets/      # Source CSV files (CRM and ERP)
+├── docs/          # Diagrams, data catalog and naming conventions
+├── scripts/       # SQL scripts for the bronze, silver and gold layers
+├── tests/         # Quality checks for the silver and gold layers
+├── LICENSE
+└── README.md
+```
 
-#### Objective
-Develop SQL-based analytics to deliver detailed insights into:
-- **Customer Behavior**
-- **Product Performance**
-- **Sales Trends**
+## Acknowledgements
 
-These insights empower stakeholders with key business metrics, enabling strategic decision-making.
+Built while following the Data Warehouse course by Baraa Khatib Salkini (Data With Baraa), with my own changes and additions
