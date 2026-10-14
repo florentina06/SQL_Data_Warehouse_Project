@@ -29,7 +29,6 @@ The warehouse is organized in three layers:
 ├── docs/          # Diagrams, data catalog and naming conventions
 ├── scripts/       # SQL scripts for the bronze, silver and gold layers
 ├── tests/         # Quality checks for the silver and gold layers
-├── LICENSE
 └── README.md
 ```
 
