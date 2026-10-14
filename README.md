@@ -14,7 +14,6 @@ The warehouse is organized in three layers:
 
 - **ETL:** loading data from two source systems (CRM and ERP) and transforming it layer by layer.
 - **Data modeling:** designing fact and dimension tables for analysis.
-- **Analytics:** SQL queries on customer behavior, product performance and sales trends.
 
 ## Goals
 
