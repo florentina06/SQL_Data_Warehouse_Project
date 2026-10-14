@@ -1,79 +1,59 @@
-# Naming Conventions
+# Table Naming Conventions
 
-This document defines the naming standards for tables, columns, and stored
-procedures across the data warehouse. Following them keeps the project
-consistent and easy to navigate.
+## Bronze Rules
+- Names start with the source system, followed by the original table name (no renaming).
+- Pattern: `<sourcesystem>_<entity>`
+  - `<sourcesystem>`: source system (e.g., `crm`, `erp`)
+  - `<entity>`: table name exactly as in the source
+- Example: `crm_customer_info` → customer data from the CRM system.
 
----
+## Silver Rules
+- Same approach as Bronze: source system prefix plus the original table name.
+- Pattern: `<sourcesystem>_<entity>`
+  - `<sourcesystem>`: source system (e.g., `crm`, `erp`)
+  - `<entity>`: table name exactly as in the source
+- Example: `crm_customer_info` → customer data from the CRM system.
 
-## 1. Table Naming
+## Gold Rules
+- Names are business-friendly and begin with a category prefix.
+- Pattern: `<category>_<entity>`
+  - `<category>`: the table's role (e.g., `dim`, `fact`)
+  - `<entity>`: descriptive name tied to the business domain (e.g., customers, products, sales)
+- Examples:
+  - `dim_customers` → dimension table for customers
+  - `fact_sales` → fact table for sales transactions
 
-### Bronze and Silver Layers
+### Category Prefixes
 
-Tables in these layers keep the structure of the source data, so each name
-combines the source system with the original table name. Source tables are
-not renamed.
-
-**Pattern:** `<source>_<table>`
-
-- `<source>` – the system the data comes from (for example `crm` or `erp`)
-- `<table>` – the table name exactly as it appears in the source
-
-**Example:** `crm_customer_info` holds customer information from the CRM system.
-
-### Gold Layer
-
-Gold tables are built for analysis, so they use business-friendly names with a
-prefix that shows the table's role.
-
-**Pattern:** `<type>_<business_name>`
-
-- `<type>` – the role of the table in the model (see the prefix list below)
-- `<business_name>` – a clear name that reflects the business concept
-
-**Examples:**
-- `dim_customers` – dimension table with customer attributes
-- `fact_sales` – fact table with sales transactions
-
-### Table Prefixes
-
-| Prefix    | Table type      | Examples                              |
+| Prefix    | Meaning         | Examples                              |
 |-----------|-----------------|---------------------------------------|
-| `dim_`    | Dimension       | `dim_customers`, `dim_products`       |
-| `fact_`   | Fact            | `fact_sales`                          |
-| `report_` | Reporting view  | `report_customers`, `report_sales_monthly` |
+| `dim_`    | Dimension table | `dim_customer`, `dim_product`         |
+| `fact_`   | Fact table      | `fact_sales`                          |
+| `report_` | Report table    | `report_customers`, `report_sales_monthly` |
 
 ---
 
-## 2. Column Naming
+# Column Naming Conventions
 
-### Surrogate Keys
+## Surrogate Keys
+- Primary keys in dimension tables end with `_key`.
+- Pattern: `<table_name>_key`
+  - `<table_name>`: the entity the key belongs to
+  - `_key`: marks the column as a surrogate key
+- Example: `customer_key` → surrogate key of `dim_customers`.
 
-The primary key of every dimension table is a surrogate key. Its name is the
-entity name followed by `_key`.
-
-**Pattern:** `<entity>_key`
-
-**Example:** `customer_key` is the surrogate key of `dim_customers`.
-
-### Technical (Metadata) Columns
-
-Columns created by the warehouse itself, rather than coming from a source
-system, start with `dwh_` followed by a description of what they store.
-
-**Pattern:** `dwh_<description>`
-
-**Example:** `dwh_create_date` records when a row was loaded into the warehouse.
+## Technical Columns
+- System-generated metadata columns start with `dwh_`.
+- Pattern: `dwh_<column_name>`
+  - `dwh`: reserved prefix for warehouse metadata
+  - `<column_name>`: what the column is used for
+- Example: `dwh_create_date` → date the record was loaded into the warehouse.
 
 ---
 
-## 3. Stored Procedures
-
-Procedures that load data are named after the layer they populate.
-
-**Pattern:** `load_<layer>`
-
-**Examples:**
-- `load_bronze` – loads data into the Bronze layer
-- `load_silver` – loads data into the Silver layer
-- `load_gold` – loads data into the Gold layer
+# Stored Procedures
+- Loading procedures follow the pattern `load_<layer>`.
+  - `<layer>`: the layer being loaded (`bronze`, `silver` or `gold`)
+- Examples:
+  - `load_bronze` → loads data into the Bronze layer
+  - `load_silver` → loads data into the Silver layer
