@@ -1,4 +1,4 @@
-# Sales Data Warehouse & Analytics
+# Sales Data Warehouse Project
 
 A portfolio project that builds a data warehouse in PostgreSQL and uses it to answer business questions about sales.
 
